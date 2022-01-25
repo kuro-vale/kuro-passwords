@@ -14,6 +14,11 @@
           </li>
           {% endif %}
           {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('generate_random_password') }}">Generate Random Password</a>
+          </li>
+          {% endif %}
+          {% if current_user.is_authenticated %}
           <li class="nav-item active">
             <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
           </li>
