@@ -2,6 +2,8 @@
 from app import create_app
 # Flask
 from flask import request, session, make_response, redirect, render_template
+from flask_login import login_required, current_user
+
 app = create_app()
 
 
@@ -15,9 +17,11 @@ def index():
 
 
 @app.route("/home")
+@login_required
 def home():
+    username = current_user.id
     context = {
-        "1": "1"
+        "username": username
     }
     return render_template("home.html", **context)
 

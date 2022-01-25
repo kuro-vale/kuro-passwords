@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <link href="{{ url_for('static', filename='css/signin.css') }}" rel="stylesheet">
+    <title>Log in</title>
+{% endblock %}
+
+{% block content %}
+    <body class="text-center">
+    <form class="form-signin" method="post" role="form">
+      <img class="mb-4" src="{{ url_for('static', filename='images/logo.png') }}" alt="" width="72" height="72">
+      <h1 class="h3 mb-3 font-weight-normal">Please Login</h1>
+      {{ form.csrf_token() }}
+      {{ form.username.label(class_='sr-only') }}
+      {{ form.username(class_='form-control', placeholder='Username', autofocus="true") }}
+      {{ form.password.label(class_='sr-only') }}
+      {{ form.password(class_='form-control', placeholder='Password') }}
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+    </form>
+    </body>
+{% endblock %}

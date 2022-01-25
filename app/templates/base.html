@@ -1,7 +1,8 @@
 {% extends "bootstrap/base.html" %}
 {% block head %}
     {{ super() }}
-    <title>{% block title %}Kuro Passwords{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <title>Kuro Passwords</title>
 {% endblock %}
 
 {% block body %}

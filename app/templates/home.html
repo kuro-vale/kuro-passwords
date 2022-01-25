@@ -1,10 +1,12 @@
 {% extends "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
+{% block head %}
+    {{ super() }}
+    <link href="{{ url_for('static', filename='css/home.css') }}" rel="stylesheet">
+{% endblock %}
 {% block content %}
     <main role="main" class="container">
-       <br><br><br>
       <div class="jumbotron">
-        <h1>Welcome</h1>
+        <h1>Welcome {{ username }}</h1>
         <p class="lead">This app is for learning purposes only, I do not recommend it to store real passwords</p>
           <a class="btn btn-lg btn-primary" href="https://github.com/kuro-vale/flask-password-manager" role="button">View GitHub repo &raquo;</a>
       </div>
