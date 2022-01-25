@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="{{ url_for('index') }}">Kuro Password Manager</a>
+      <a class="navbar-brand" href="{{ url_for('home') }}">Kuro Password Manager</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,6 +20,11 @@
           {% endif %}
           {% if current_user.is_authenticated %}
           <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('show_logs') }}">Login Logs</a>
+          </li>
+          {% endif %}
+          {% if current_user.is_authenticated %}
+          <li class="nav-item">
             <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
           </li>
           {% endif %}

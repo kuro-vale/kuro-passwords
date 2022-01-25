@@ -1,10 +1,12 @@
 # App
 from app import create_app
+from app.firestore_service import post_log, get_logs
 # Python
 import random
 import string
+from datetime import datetime
 # Flask
-from flask import request, session, make_response, redirect, render_template, flash, url_for
+from flask import request, redirect, render_template, flash, url_for
 from flask_login import login_required, current_user
 
 app = create_app()
@@ -14,9 +16,11 @@ app = create_app()
 @app.route("/")
 def index():
     user_ip = request.remote_addr
-    session["user_ip"] = user_ip
-    response = make_response(redirect("/home"))
-    return response
+    if current_user.is_authenticated:
+        date = datetime.now()
+        username = current_user.id
+        post_log(user_ip, date, username)
+    return redirect("/home")
 
 
 @app.route("/home")
@@ -39,6 +43,14 @@ def generate_random_password():
     random.shuffle(random_password)
     flash("".join(random_password))
     return redirect(url_for("home"))
+
+
+@app.route("/logs")
+@login_required
+def show_logs():
+    username = current_user.id
+    logs = get_logs(username)
+    return render_template("logs.html", logs=logs)
 
 
 if __name__ == "__main__":

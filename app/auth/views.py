@@ -25,7 +25,7 @@ def login():
                 user_data = UserData(username, password)
                 user = UserModel(user_data)
                 login_user(user)
-                return redirect(url_for("home"))
+                return redirect(url_for("index"))
             else:
                 flash("Invalid information")
         else:
@@ -47,7 +47,7 @@ def signup():
             user = UserModel(user_data)
             login_user(user)
             flash("Successfully register")
-            return redirect(url_for("home"))
+            return redirect(url_for("index"))
         else:
             flash("Username already exists")
     return render_template("signup.html", form=form)
