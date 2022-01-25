@@ -2,22 +2,19 @@
 {% block head %}
     {{ super() }}
     <link href="{{ url_for('static', filename='css/signin.css') }}" rel="stylesheet">
-    <title>Log in</title>
+    <title>Sign Up</title>
 {% endblock %}
 
 {% block content %}
     <body class="text-center">
     <form class="form-signin" method="post" role="form">
       <img class="mb-4" src="{{ url_for('static', filename='images/logo.png') }}" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Create an account</h1>
       {{ form.csrf_token() }}
       {{ form.username.label(class_='sr-only') }}
       {{ form.username(class_='form-control', placeholder='Username', autofocus="true") }}
       {{ form.password.label(class_='sr-only') }}
       {{ form.password(class_='form-control', placeholder='Password') }}
-      <div class="checkbox mb-3">
-          <a href="{{ url_for('auth.signup') }}">Create an account</a>
-      </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Continue</button>
     </form>
     </body>

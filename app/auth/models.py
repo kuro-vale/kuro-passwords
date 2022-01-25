@@ -11,10 +11,7 @@ class UserData:
 
 
 class UserModel(UserMixin):
-    def __init__(self, user_data):
-        """
-        :param user_data: UserData
-        """
+    def __init__(self, user_data: UserData):
         self.id = user_data.username
         self.password = user_data.password
 
