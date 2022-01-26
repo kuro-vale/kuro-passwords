@@ -1,6 +1,7 @@
 # App
 from app import create_app
-from app.firestore_service import post_log, get_logs, get_passwords
+from app.firestore_service import post_log, get_logs, get_passwords, post_password
+from app.forms import PasswordForm
 # Python
 import random
 import string
@@ -18,20 +19,29 @@ def index():
     user_ip = request.remote_addr
     if current_user.is_authenticated:
         date = datetime.now()
-        username = current_user.id
-        post_log(user_ip, date, username)
+        user_id = current_user.id
+        post_log(user_ip, date, user_id)
     return redirect("/home")
 
 
-@app.route("/home")
+@app.route("/home", methods=["GET", "POST"])
 @login_required
 def home():
-    username = current_user.id
-    passwords = get_passwords(username)
+    user_id = current_user.id
+    passwords = get_passwords(user_id)
+    password_form = PasswordForm()
     context = {
-        "username": username,
-        "passwords": passwords
+        "username": user_id,
+        "passwords": passwords,
+        "form": password_form
     }
+    if password_form.validate_on_submit():
+        site = password_form.site.data
+        username = password_form.username.data
+        password = password_form.password.data
+        post_password(site, username, password, user_id)
+        flash("Password added")
+        return redirect(url_for("home"))
     return render_template("home.html", **context)
 
 
@@ -44,14 +54,14 @@ def generate_random_password():
         random_password.append(random.choice(characters))
     random.shuffle(random_password)
     flash("".join(random_password))
-    return redirect(url_for("home"))
+    return redirect(request.referrer)
 
 
 @app.route("/logs")
 @login_required
 def show_logs():
-    username = current_user.id
-    logs = get_logs(username)
+    user_id = current_user.id
+    logs = get_logs(user_id)
     return render_template("logs.html", logs=logs)
 
 

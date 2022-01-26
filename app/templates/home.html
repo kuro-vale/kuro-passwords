@@ -6,10 +6,24 @@
 {% block content %}
     <main role="main" class="container">
       <div class="jumbotron">
-        <h1>Welcome {{ username }}</h1>
+        <h1>Welcome, {{ username }}</h1>
         <p class="lead">This app is for learning purposes only, I do not recommend it to store real passwords.<br>>> Information is stored in firestore cloud.</p>
           <a class="btn btn-lg btn-primary" href="https://github.com/kuro-vale/flask-password-manager" role="button" target="_blank">View GitHub repo &raquo;</a>
       </div>
+       <hr>
+       <div class="container">
+            <h3>Save New Password</h3>
+            <form class="form" method="post" role="form">
+                <div class="row">
+                  {{ form.csrf_token() }}
+                  <div class="col-md-4 col-new">{{ form.site(placeholder='www.example.com') }}</div>
+                  <div class="col-md-4 col-new">{{ form.username(placeholder='Username') }}</div>
+                  <div class="col-md-4 col-new">{{ form.password(placeholder='Password') }}
+                      <button class="btn btn-secondary" type="submit">Create</button></div>
+                </div>
+            </form>
+       </div>
+       <hr>
       <div class="container">
         <h3>Saved Passwords</h3>
         <div class="row">
@@ -17,6 +31,9 @@
             <div class="col-md-4 col-title">Username</div>
             <div class="col-md-4 col-title">Password</div>
         </div>
+        {% if not passwords %}
+            <p class="btn btn-lg btn-danger btn-block">Add a new password!!!</p>
+        {% endif %}
         {% for password in passwords %}
         <div class="row">
             <div class="col-md-4">{{ password.to_dict().Site }}</div>
@@ -27,7 +44,8 @@
             </div>
             </div>
         {% endfor %}
-</div>
+       <hr>
+      </div>
     </main>
 <script>
     function showHide(i) {

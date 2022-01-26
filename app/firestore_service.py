@@ -28,3 +28,8 @@ def post_user(user_data):
 def post_log(ip, date, user_id):
     logs_ref = db.collection(f"users/{user_id}/logs")
     logs_ref.add({"IP": ip, "Date": date})
+
+
+def post_password(site, username, password, user_id):
+    passwords_ref = db.collection(f"users/{user_id}/passwords")
+    passwords_ref.add({"Site": site, "Username": username, "Password": password})

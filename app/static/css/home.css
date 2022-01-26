@@ -23,9 +23,12 @@ h3 {
   border: 1px solid #343A40;
 }
 .col-title {
-  background-color: #486A8C;
+  background-color: #6FA4D9;
 }
 hr {
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+.col-new {
+background-color: white;
 }
