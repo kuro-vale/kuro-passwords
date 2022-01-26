@@ -5,7 +5,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
           </li>
           {% if not current_user.is_authenticated %}
@@ -14,17 +14,17 @@
           </li>
           {% endif %}
           {% if current_user.is_authenticated %}
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="{{ url_for('generate_random_password') }}">Generate Random Password</a>
           </li>
           {% endif %}
           {% if current_user.is_authenticated %}
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="{{ url_for('show_logs') }}">Login Logs</a>
           </li>
           {% endif %}
           {% if current_user.is_authenticated %}
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
           </li>
           {% endif %}

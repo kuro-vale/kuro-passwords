@@ -16,6 +16,10 @@ def get_logs(user_id):
     return db.collection(f"users/{user_id}/logs").get()
 
 
+def get_passwords(user_id):
+    return db.collection(f"users/{user_id}/passwords").get()
+
+
 def post_user(user_data):
     user_ref = db.document(f"users/{user_data.username}")
     user_ref.set({"password": user_data.password})

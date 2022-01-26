@@ -5,3 +5,27 @@ body {
   position: fixed;
   margin-left: 40%;
 }
+h3 {
+  margin-top: 2rem;
+}
+
+.row {
+  margin-bottom: 1rem;
+}
+.row .row {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+[class*="col-"] {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #B0C4D9;
+  border: 1px solid #343A40;
+}
+.col-title {
+  background-color: #486A8C;
+}
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

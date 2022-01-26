@@ -1,6 +1,6 @@
 # App
 from app import create_app
-from app.firestore_service import post_log, get_logs
+from app.firestore_service import post_log, get_logs, get_passwords
 # Python
 import random
 import string
@@ -27,8 +27,10 @@ def index():
 @login_required
 def home():
     username = current_user.id
+    passwords = get_passwords(username)
     context = {
-        "username": username
+        "username": username,
+        "passwords": passwords
     }
     return render_template("home.html", **context)
 

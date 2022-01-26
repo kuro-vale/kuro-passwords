@@ -1,12 +1,12 @@
 # App
-from werkzeug.security import generate_password_hash, check_password_hash
-
 from app.auth.models import UserModel, UserData
 from app.firestore_service import get_user, post_user
 from app.forms import LoginForm
 # Flask
 from flask import Blueprint, redirect, url_for, flash, render_template
 from flask_login import current_user, login_user, login_required, logout_user
+# Werkzeug
+from werkzeug.security import generate_password_hash, check_password_hash
 
 auth = Blueprint("auth", __name__, url_prefix="/auth")
 
