@@ -11,6 +11,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 auth = Blueprint("auth", __name__, url_prefix="/auth")
 
 
+# Auth Paths
 @auth.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
@@ -25,6 +26,7 @@ def login():
                 user_data = UserData(username, password)
                 user = UserModel(user_data)
                 login_user(user)
+                # Redirect to index in order to save login log
                 return redirect(url_for("index"))
             else:
                 flash("Invalid information")
@@ -47,6 +49,7 @@ def signup():
             user = UserModel(user_data)
             login_user(user)
             flash("Successfully register")
+            # Redirect to index in order to save login log
             return redirect(url_for("index"))
         else:
             flash("Username already exists")

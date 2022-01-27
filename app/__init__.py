@@ -18,8 +18,6 @@ def load_user(username):
 
 def create_app():
     app = Flask(__name__)
-    app.debug = 1
-    app.env = "development"
     app.config.from_object(Config)
     Bootstrap(app)
     app.register_blueprint(auth)

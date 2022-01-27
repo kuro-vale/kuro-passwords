@@ -17,6 +17,7 @@ app = create_app()
 @app.route("/")
 def index():
     user_ip = request.remote_addr
+    # Save login log
     if current_user.is_authenticated:
         date = datetime.now()
         user_id = current_user.id
@@ -35,6 +36,7 @@ def home():
         "passwords": passwords,
         "form": password_form
     }
+    # Save new password
     if password_form.validate_on_submit():
         site = password_form.site.data
         username = password_form.username.data
@@ -45,6 +47,7 @@ def home():
     return render_template("home.html", **context)
 
 
+# Methods Paths
 @app.route("/random")
 def generate_random_password():
     characters = list(string.ascii_letters + string.digits + string.punctuation)
