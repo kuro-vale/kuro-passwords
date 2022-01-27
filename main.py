@@ -1,6 +1,6 @@
 # App
 from app import create_app
-from app.firestore_service import post_log, get_logs, get_passwords, post_password
+from app.firestore_service import post_log, get_logs, get_passwords, post_password, delete_password, update_password
 from app.forms import PasswordForm
 # Python
 import random
@@ -63,6 +63,28 @@ def show_logs():
     user_id = current_user.id
     logs = get_logs(user_id)
     return render_template("logs.html", logs=logs)
+
+
+@app.route("/<password_id>/delete")
+def delete(password_id):
+    user_id = current_user.id
+    delete_password(password_id, user_id)
+    flash("Password Deleted")
+    return redirect(url_for("home"))
+
+
+@app.route("/<password_id>/update", methods=["GET", "POST"])
+def update(password_id):
+    user_id = current_user.id
+    password_form = PasswordForm()
+    if password_form.validate_on_submit():
+        site = password_form.site.data
+        username = password_form.username.data
+        password = password_form.password.data
+        update_password(password_id, site, username, password, user_id)
+        flash("Password Updated")
+        return redirect(url_for("home"))
+    return render_template("update.html", form=password_form)
 
 
 if __name__ == "__main__":

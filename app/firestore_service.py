@@ -33,3 +33,13 @@ def post_log(ip, date, user_id):
 def post_password(site, username, password, user_id):
     passwords_ref = db.collection(f"users/{user_id}/passwords")
     passwords_ref.add({"Site": site, "Username": username, "Password": password})
+
+
+def delete_password(password_id, user_id):
+    password_ref = db.document(f"users/{user_id}/passwords/{password_id}")
+    password_ref.delete()
+
+
+def update_password(password_id, site, username, password, user_id):
+    password_ref = db.document(f"users/{user_id}/passwords/{password_id}")
+    password_ref.update({"Site": site, "Username": username, "Password": password})

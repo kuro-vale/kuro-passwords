@@ -30,5 +30,11 @@ hr {
   margin-bottom: 2rem;
 }
 .col-new {
-background-color: white;
+    background-color: white;
+}
+.form-custom {
+    width: 100%;
+}
+.form-custom-pass {
+    width: 70%;
 }

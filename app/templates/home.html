@@ -16,9 +16,9 @@
             <form class="form" method="post" role="form">
                 <div class="row">
                   {{ form.csrf_token() }}
-                  <div class="col-md-4 col-new">{{ form.site(placeholder='www.example.com') }}</div>
-                  <div class="col-md-4 col-new">{{ form.username(placeholder='Username') }}</div>
-                  <div class="col-md-4 col-new">{{ form.password(placeholder='Password') }}
+                  <div class="col-md-4 col-new">{{ form.site(class_='form-custom', type='url', placeholder='https://www.example.com') }}</div>
+                  <div class="col-md-4 col-new">{{ form.username(class_='form-custom', placeholder='Username') }}</div>
+                  <div class="col-md-4 col-new">{{ form.password(class_='form-custom-pass', placeholder='Password') }}
                       <button class="btn btn-secondary" type="submit">Create</button></div>
                 </div>
             </form>
@@ -36,7 +36,14 @@
         {% endif %}
         {% for password in passwords %}
         <div class="row">
-            <div class="col-md-4">{{ password.to_dict().Site }}</div>
+            <div class="col-md-4">
+                <a class="dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                     <a class="dropdown-item" href="{{ password.to_dict().Site }}">Visit Site</a>
+                     <a class="dropdown-item" href="{{ url_for('delete', password_id=password.id) }}">Delete Password</a>
+                     <a class="dropdown-item" href="{{ url_for('update', password_id=password.id) }}">Update Password</a>
+                </div>
+                {{ password.to_dict().Site }}</div>
             <div class="col-md-4">{{ password.to_dict().Username }}</div>
             <div class="col-md-4">
                 <input type="password" readonly disabled value="{{ password.to_dict().Password }}" id="{{ loop.index }}">

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+<link href="{{ url_for('static', filename='css/home.css') }}" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h3>Update Password</h3>
+    <form class="form" method="post" role="form">
+        <div class="row">
+            {{ form.csrf_token() }}
+            <div class="col-md-4 col-new">{{ form.site(class_='form-custom', type='url', placeholder='https://www.example.com') }}</div>
+            <div class="col-md-4 col-new">{{ form.username(class_='form-custom', placeholder='Username') }}</div>
+            <div class="col-md-4 col-new">{{ form.password(class_='form-custom-pass', placeholder='Password') }}
+                <button class="btn btn-secondary" type="submit">Update</button></div>
+        </div>
+    </form>
+       </div>
+{% endblock %}
