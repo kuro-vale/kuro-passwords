@@ -16,7 +16,7 @@ app = create_app()
 # Home paths
 @app.route("/")
 def index():
-    user_ip = request.remote_addr
+    user_ip = request.access_route[0]
     # Save login log
     if current_user.is_authenticated:
         date = datetime.now()
