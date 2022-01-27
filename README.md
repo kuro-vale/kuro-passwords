@@ -46,3 +46,12 @@ or just run:
 cd flask-password-manager
 python3 main.py
 ```
+## Web screenshots
+### Home page
+[![image](https://cdn.discordapp.com/attachments/936400336409755720/936400405812895795/unknown.png)](https://flask-passwords.ue.r.appspot.com/home)
+### Login Logs
+[![image](https://media.discordapp.net/attachments/936400336409755720/936400788203376640/unknown.png)](https://flask-passwords.ue.r.appspot.com/home)
+### Editing passwords
+[![image](https://media.discordapp.net/attachments/936400336409755720/936400856255967303/unknown.png?width=1080&height=215)](https://flask-passwords.ue.r.appspot.com/home)
+### Login Page
+[![image](https://media.discordapp.net/attachments/936400336409755720/936400922937020436/unknown.png)](https://flask-passwords.ue.r.appspot.com/home)
