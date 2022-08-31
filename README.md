@@ -2,7 +2,9 @@
 
 A password manager made with Flask, Bootstrap, Jinja2
 
-Visit the [deployment](https://flask-passwords.ue.r.appspot.com/home) of the app
+### Docker image
+
+Run the [docker image](https://hub.docker.com/r/kurovale/kuro-passwords) of this project
 
 ## Prerequisites
 **Making venv**
