@@ -1,0 +1,17 @@
+version: "3.2"
+services:
+  firestore_emulator:
+    image: mtlynch/firestore-emulator
+    environment:
+      - FIRESTORE_PROJECT_ID=flask-passwords
+      - PORT=8200
+    ports:
+      - 8200:8200
+  app:
+    image: kurovale/kuro-passwords
+    environment:
+      - FIRESTORE_EMULATOR_HOST=firestore_emulator:8200
+    ports:
+      - 5000:5000
+    depends_on:
+      - firestore_emulator
