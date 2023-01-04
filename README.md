@@ -2,7 +2,27 @@
 
 A password manager made with Flask, Bootstrap, Jinja2
 
-### Docker image
+## Screenshots
+
+### Home
+
+![Screenshot_20230104_152419](https://user-images.githubusercontent.com/87244716/210643346-e9cf1fdc-56a3-4e64-ab87-48e6e27a9541.png)
+
+### Login Logs
+
+![Screenshot_20230104_152504](https://user-images.githubusercontent.com/87244716/210643449-5673b7eb-53d3-4031-96f2-b0a0876ccb81.png)
+
+
+#### Login
+
+![Screenshot_20230104_152216](https://user-images.githubusercontent.com/87244716/210642991-aa188262-014b-4efd-a28b-3065f26ded0e.png)
+
+
+## Deploy
+
+ollow any of these methods and open http://localhost:5000/ to see the App.
+
+## Docker
 
 Run the [docker image](https://hub.docker.com/r/kurovale/kuro-passwords) of this project
 
