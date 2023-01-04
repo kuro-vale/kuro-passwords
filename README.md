@@ -1,5 +1,7 @@
 # Kuro Password Manager
 
+[![PWD](https://raw.githubusercontent.com/play-with-docker/stacks/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/kuro-vale/kuro-passwords/main/docker-compose.yml)
+
 A password manager made with Flask, Bootstrap, Jinja2
 
 ## Screenshots
@@ -20,7 +22,7 @@ A password manager made with Flask, Bootstrap, Jinja2
 
 ## Deploy
 
-ollow any of these methods and open http://localhost:5000/ to see the App.
+Follow any of these methods and open http://localhost:5000/ to see the App.
 
 ## Docker
 
